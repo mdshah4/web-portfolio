@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shah Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        body {
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+
+            background-color: #050505;
+            font-family: Arial, sans-serif;
+        }
+
+        .plate {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(36, 34, 34);
+            border: 5px solid #f0f0f0;
+            border-radius: 200%;
+            position:absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.5s, width 0.5s, height 0.5s, box-shadow 0.5s;
+            box-shadow: 0 0 30px rgba(232, 36, 36, 0.748);
+        }
+
+        .hidden {
+            display: none;
+        }
+        .blur {
+  filter: blur(3px); /* Adjust the blur intensity as needed */
+}
+
+        .icon, .profile-pic {
+            z-index: 1;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .icon {
+            font-size: 24px;
+            color: #fff9f9;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .expanded-plate {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(19, 18, 18);
+            border: 4px solid #f0f0f0;
+            box-shadow: 0 0 15px rgba(238, 0, 0, 0.979);
+            position: fixed;
+            opacity: 10px;
+            z-index: 1;
+        }
+
+
+        .skills {
+            position: fixed;
+            height: -150vh;
+            top: 120px;
+            width: 400px;
+            right:190px;
+            cursor: pointer;
+            justify-content:left;
+            transform: translateX(10%,20%);
+            background-color: rgb(19, 19, 19);
+            padding: 10px 350px 10px 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(55, 198, 255, 0.989);
+            opacity: 0;
+            color: white;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: auto;
+
+        }
+ /*    
+ 
+ 
+ 
+.education {
+    position:fixed;
+    width:500px;
+    justify-content: center;
+    align-items: center;
+    top:400px;
+    opacity: 0;
+    pointer-events: auto;
+}
+
+.expanded-plate1:hover .education {
+    height: -150vh;
+    top: -120px;
+    right:-180px;
+    margin:0;
+    display:block;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.5s, width 0.5s, box-shadow 0.5s;
+    background-color: rgb(0, 0, 0);
+    padding: 10px 25px 10px 20px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 5px rgba(8, 236, 224, 0.84);
+    opacity: 1;
+} */
+
+        .expanded-plate:hover .skills {
+            position:fixed;
+            left:-50px;
+            top:-180px;
+            opacity: 1;
+            z-index: 10000;
+        }
+
+        .expanded-plate:hover .icon {
+            opacity: 0;
+        }
+
+
+        .plate1 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(36, 34, 34);
+            border: 5px solid #f0f0f0;
+            border-radius: 200%;
+            position:absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.5s, width 0.5s, height 0.5s, box-shadow 0.5s;
+            box-shadow: 0 0 30px rgba(232, 36, 36, 0.748);
+        }
+
+        .hidden1 {
+            display: none;
+        }
+
+        .icon, .profile-pic {
+            z-index: 1;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .icon1 {
+            font-size: 24px;
+            color: #fff9f9;
+        }
+
+
+        .expanded-plate1 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(19, 18, 18);
+            border: 4px solid #f0f0f0;
+            box-shadow: 0 0 15px rgba(238, 0, 0, 0.979);
+            position: fixed;
+            opacity: 10px;
+            z-index: 1;
+        }
+
+
+.expanded-plate1:hover .education {
+    height: -150vh;
+    top: -120px;
+    right:-180px;
+    margin:0;
+    display:block;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.5s, width 0.5s, box-shadow 0.5s;
+    background-color: rgb(0, 0, 0);
+    padding: 10px 25px 10px 20px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 5px rgba(8, 236, 224, 0.84);
+    opacity: 1;
+}
+
+.education {
+    position:fixed;
+    width:500px;
+    justify-content: center;
+    align-items: center;
+    top:400px;
+    opacity: 0;
+    pointer-events: auto;
+}
+
+.education img {
+            max-width: 100%;
+            max-height: 10%;
+            left:-150px;
+            display:flex;
+            margin: auto;
+        }
+
+.expanded-plate1:hover .icon {
+    opacity: 1;
+}
+/* 
+.education  {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 20px;
+} */
+
+.left-align {
+  text-align: center;
+}
+.no-wrap {
+  white-space: nowrap;
+}
+
+.right-align {
+  text-align: center;
+}
+
+
+
+.expanded-plate1:hover .experience {
+    height: -150vh;
+    top: 80px;
+    left:-100px;
+    margin:0;
+    display:block;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.5s, width 0.5s, box-shadow 0.5s;
+    background-color: rgb(0, 0, 0);
+    padding:  10px 160px 100px 5px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 5px rgba(8, 236, 224, 0.84);
+    opacity: 1;
+    
+}
+
+.experience {
+    position:fixed;
+    width:500px;
+    justify-content: center;
+    align-items: center;
+    top:-400px;
+    bottom:100px;
+    opacity: 0;
+    display:block;
+    cursor:pointer;
+    color: rgb(255, 255, 255);
+    pointer-events: auto;
+    
+}
+
+/* 
+.experience img {
+            max-width: 100%;
+            max-height: 10%;
+            left:150px;
+            opacity: 1;
+            display:flex;
+            margin: auto;
+
+        } */
+
+ .expanded-plate1:hover .icon {
+    opacity: 1;
+} 
+
+.experience  {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 200px 100px;
+  margin-top: 20px;
+  
+}
+
+
+
+
+.icon2 {
+            font-size: 24px;
+            color: #fff9f9;
+        }
+
+
+        .expanded-plate2 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(19, 18, 18);
+            border: 4px solid #f0f0f0;
+            box-shadow: 0 0 15px rgba(238, 0, 0, 0.979);
+            position: fixed;
+            opacity: 1;
+        }
+
+
+.expanded-plate2:hover .Contact {
+    height: -90vh;
+    top: 100px;
+    right: -120px;
+    margin:0;
+    display:flex;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.5s, width 0.5s, box-shadow 0.5s;
+    background-color: rgb(30, 30, 30);
+    padding:15px 20px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 1px rgba(8, 236, 224, 0.84);
+    opacity: 1;
+}
+
+.Contact {
+    position:fixed;
+    width:-250px;
+    right:-50px;
+    justify-content: center;
+    align-items: center;
+    top:-400px;
+    opacity: 0;
+    pointer-events: auto;
+    z-index: -1;
+}
+
+.expanded-plate2:hover .icon {
+    opacity: 1;
+}
+
+
+
+</style>
+</head>
+<body>
+    <div class="plate" id="center-plate">
+        <img src="IMG_1850.JPG" alt="Profile" class="profile-pic" id="profile-pic">
+        <i class="fas fa-plus icon hidden"  class="plusButton" id="plusButton"></i>
+    </div>
+    <div class="plate hidden expanded-plate1" id="plate-1">
+        <i class="fas fa-briefcase icon"></i>
+        <div class="experience hidden">
+            <p class="left-align no-wrap"> Operations Analyst/ Administrator - Tamilnadu Steel Corporation, India	(May 2019–Jan 2023)
+            </p>
+            
+        <p class="left-align no-wrap">
+            Content Creator-Natpethunai Memes - (Aug 2019–Present) <a href="https://www.instagram.com/natpethunai_memes/?hl=en" target="_blank"> Instagram </a> 
+        </p>           </div>
+    </div>
+    <div class="plate hidden expanded-plate2" id="plate-2">
+        <i class="fas fa-phone icon"></i>
+        <div class="Contact">
+            <a href="mailto:mohammedshahjahan6@gmail.com;"> Mail me </a><div>
+                      '                 '  
+            </div>
+            <a href="https://www.linkedin.com/in/mohammed-shahjahan"  target="_blank">LinkedIn Profile</a>
+        </div>
+    </div>
+    <div class="plate hidden expanded-plate" id="plate-3">
+        <i class="fas fa-laptop-code icon"></i>
+        <div class="skills"><p class="center-plate">  Skills</p>
+            <p class="left-align no-wrap">Technical Languages:	MS SQL, Javascript, HTML, CSS, Python</p>
+            <p class="left-align no-wrap">Software proficiency:	MS Excel, Canva, Capcut PC, MS Visio, MS Word, MS Presentation, MS Project 
+            </p>            <p class="left-align no-wrap">Soft skills:	Analytical thinking, effective communication, detail-oriented, time management, and teamwork
+            </p></div>
+    </div>
+    <div class="plate hidden expanded-plate1" id="plate-4">
+        <i class="fas fa-university icon"></i>
+        <div class="education hidden">
+            <p class="left-align">Information Technology Business Analysis, 
+                Conestoga college,ON, Canada (Jan 2023- April 2024)
+                </p>
+            <p class="left-align">Bachelors in Computer Technology,	
+
+                PSG College of Arts and Science,India
+                (June 2018-May 2021)
+                .</p>
+          </div>
+            </div>
+    </div>
+
+    <audio id="click-sound" src="C:\Users\Shahjahan\Downloads\rclick-13693.mp3"></audio>
+
+    <script>
+        const centerPlate = document.getElementById('center-plate');
+        const plates = [
+            document.getElementById('plate-1'),
+            document.getElementById('plate-2'),
+            document.getElementById('plate-3'),
+            document.getElementById('plate-4')
+        ];
+        const plusButton = document.getElementById('plusButton');
+        const profilePic = document.getElementById('profile-pic');
+        const clickSound = document.getElementById('click-sound');
+        
+  
+        let expanded = false;
+
+        centerPlate.addEventListener('click', () => {
+            clickSound.play();
+            if (!expanded) {
+                expandPlates();
+            } else {
+                collapsePlates();
+            }
+        });
+
+        plusButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            clickSound.play();
+            if (expanded) {
+                collapsePlates();
+            }
+        });
+
+        function expandPlates() {
+            plates.forEach(plate => plate.classList.remove('hidden'));
+
+            // Creating the effect of breaking into four parts
+            centerPlate.style.width = '50px';
+            centerPlate.style.height = '50px';
+
+            plates[0].style.transform = 'translate(-200px, -200px) scale(2)';
+            plates[1].style.transform = 'translate(200px, -200px) scale(2)';
+            plates[2].style.transform = 'translate(-200px, 200px) scale(2)';
+            plates[3].style.transform = 'translate(200px, 200px) scale(2)';
+            
+            profilePic.classList.add('hidden');
+            plusButton.classList.remove('hidden');
+            expanded = true;
+        }
+
+        function collapsePlates() {
+            plates.forEach(plate => {
+                plate.style.transform = 'translate(0, 0) scale(1)';
+            });
+
+            setTimeout(() => {
+                plates.forEach(plate => plate.classList.add('hidden'));
+                centerPlate.style.width = '200px';
+                centerPlate.style.height = '200px';
+                profilePic.classList.remove('hidden');
+                plusButton.classList.add('hidden');
+            }, 500); // Wait for the transition to finish before hiding the plates
+
+            expanded = false;
+        }
+
+
+  
+    </script>
+</body>
+</html>
